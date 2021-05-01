@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meet my Tutor</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button defaultHref="profile" text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <ion-searchbar showcancelbutton=""
+  (ionInput)="filterList($event)"></ion-searchbar>
+  <div *ngFor="let tut of tutList | async">
+  <ion-item
+
+    *ngIf="((tut.isTutor==true)&&(user?.userId != tut.userId))"
+    routerLink="/tform/{{tut.userId}}"
+  >
+    <ion-label>
+      <h2>{{ tut.userName}}</h2>
+      <p>Email: {{ tut.userEmail }}</p>
+      <p>Tutoring Courses: {{ tut.courseId }}</p>
+    </ion-label>
+  </ion-item>
+  </div>
+</ion-content>
+

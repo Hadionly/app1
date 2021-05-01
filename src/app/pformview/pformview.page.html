@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title >{{ pform?.sName }} / {{ pform?.pName }}</ion-title>
+    
+    <ion-buttons slot="primary">
+    	<ion-back-button  text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <h3>Professor Name</h3>
+  <p >{{ pform?.pName }}</p>
+
+  <h3>Email</h3>
+  <p>{{ pform?.pEmail }}</p>
+<br>
+  <h3>Student Name</h3>
+  <p>{{pform?.sName}}</p>
+  <h3>Student Email</h3>
+  <p>{{pform?.sEmail}}</p>
+  <h3>Student ID</h3>
+  <p>{{pform?.studentId}}</p>
+  <h3>Timing</h3>
+  <p>from {{pform?.sTime}} - to {{pform?.eTime}}</p>
+  <ion-row>
+  <ion-col size="6">
+  <ion-button *ngIf="((user2?.isProf==true) || (user2?.isAdmin==true))"type="submit" expand="block" shape="round" (click)="accepted()">Accept</ion-button>
+  </ion-col>
+  <ion-col size="6">
+    <ion-button *ngIf="((user2?.isProf==true) || (user2?.isAdmin==true))"type="submit" expand="block" shape="round" color="danger" (click)="decline()">Decline</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-button *ngIf="((user2?.isStudent==true) || (user2?.isAdmin==true))"type="submit" expand="block" shape="round" (click)="delete(pform?.id, pform?.pName)">Delete</ion-button>
+</ion-content>

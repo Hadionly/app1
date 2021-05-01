@@ -1,0 +1,50 @@
+
+
+<!--<ion-content class="ion-padding">
+  <ion-card>
+    <form>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email"[(ngModel)]="email" name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password"[(ngModel)]="password" name="password"></ion-input>
+        </ion-item>
+        <ion-button expand="block" shape="round" type="submit" (click)="login()">Login</ion-button>
+      </ion-list>
+    </form>
+  </ion-card>
+
+</ion-content>-->
+
+<ion-content>
+  <div class="container">
+  <ion-card>
+    <ion-card-header>
+      <img src="assets/login-logo.png" alt="login-logo" class="login-logo">
+      <ion-card-title style ="text-align: center;">Login</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="ion-padding">
+      <ion-item>
+        <ion-icon  name="person-outline"></ion-icon>
+        <ion-input placeholder="Email" type="email"[(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-icon name="key-outline"></ion-icon>
+        <ion-input placeholder="Password" type="password"[(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button expand="full"type="submit" (click)="login()">Login</ion-button>
+      <ion-button expand="full" color="secondary" [routerLink]="['/register']">Register</ion-button>
+    </ion-card-content>
+  </ion-card>
+  </div>
+  <div style="text-align: center;">
+    <p><a [routerLink]="['/forget-password']">Forgot Password</a></p>
+  </div>
+  
+</ion-content>

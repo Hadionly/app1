@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-button    color="tertiary" (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div >
+
+  </div>
+
+  <div id="container" >
+    <img src="assets/aurak-logo.png" alt="logo" class="logo">
+  <ion-button color="aurak" expand="full" *ngIf="isAdmin || isStudent" (click)="RedirSchedule()">Generate Schedule</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="isAdmin || isStudent" (click)="RedirPmeeting()">Schedule with Professor</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="isAdmin || isStudent" (click)="RedirTmeeting()">Schedule with Tutor</ion-button>
+
+  <ion-button color="danger" expand="full" *ngIf="isAdmin || isStudent">Transportation Services</ion-button>
+  <!-- <ion-button color="danger" expand="full"   routerLink="/viewcal/{{userId}}">View Calendar</ion-button> -->
+  <ion-button color="danger" expand="full" *ngIf="isAdmin" (click)="RedirProfcreate()">Add Professor</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="isAdmin" (click)="RedirTutorcreate()">Add Tutor</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="isAdmin" (click)="RedirCourses()">Add Course</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="isAdmin || isProf" (click)="RedirViewmeeting()">View Professor Meetings</ion-button>
+ <!-- <ion-button color="danger" expand="full" *ngIf="isAdmin || isStudent" (click)="RedirViewStudentmeeting()">View Student Meetings</ion-button>-->
+  <ion-button color="danger" expand="full" *ngIf="isAdmin || isStudent" (click)="RedirViewTmeeting()">View Tutor Meetings</ion-button>
+  <ion-button color="danger" expand="full" *ngIf="isAdmin || isStudent" (click)="RedirViewSchedTmeeting()">View sched Meetings</ion-button>
+  <!-- <ion-button color="danger" expand="full"  (click)="gotoProfile()">Profile</ion-button> -->
+  <!-- <ion-button color="danger" expand="full"   routerLink="/newcal/{{userId}}">View New Calendar</ion-button> -->
+
+  </div>
+</ion-content>

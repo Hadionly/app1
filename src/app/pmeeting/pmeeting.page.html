@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meet my Professor</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button defaultHref="profile" text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <ion-searchbar showcancelbutton=""
+  (ionInput)="filterList($event)"></ion-searchbar>
+  <div *ngFor="let prof of profList | async">
+  <ion-item
+
+    *ngIf="(prof.isProf==true)"
+    routerLink="/pform/{{prof.userId}}"
+  >
+    <ion-label >
+      <h2>{{ prof.userName}}</h2>
+      <p>Email: {{ prof.userEmail }}</p>
+    </ion-label>
+  </ion-item>
+  </div>
+</ion-content>
+

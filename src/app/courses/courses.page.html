@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Courses</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button  text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="isSug=true">Click for Suggested Courses</ion-button>
+  <ion-button (click)="isSug=false">Click for Normal Courses</ion-button>
+  <ion-button (click)="isSug=null">Click for Both</ion-button>
+  <h3 *ngIf="isSug==true">Add Suggested Course</h3>
+  <h3 *ngIf="isSug==false">Add Normal Course</h3>
+  <h3 *ngIf="isSug==null">Add for Normal/Suggested Course</h3>
+ 
+    <ion-select required
+    multiple="false" cancelText="Back" okText="OK" placeholder="Choose the huge" [(ngModel)]="isSug" name="isSug">
+     
+    <ion-select-option value="true" >Computer Engineering</ion-select-option>
+    <ion-select-option  value="false">Computer Science</ion-select-option>
+    <ion-select-option  value="null">Mechanical Engineering</ion-select-option>
+    
+    </ion-select>
+    
+ 
+  <form  >
+    
+    <ion-item *ngIf="isSug==true || isSug==null">
+      <ion-select required
+      multiple="false" cancelText="Back" okText="OK" placeholder="Choose the major" [(ngModel)]="major" name="major">
+       
+      <ion-select-option value="Computer Engineering" >Computer Engineering</ion-select-option>
+      <ion-select-option  value="Computer Science">Computer Science</ion-select-option>
+      <ion-select-option  value="Mechanical Engineering">Mechanical Engineering</ion-select-option>
+      <ion-select-option  value="Business">Business</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Course Name</ion-label>
+        <ion-input  required
+        [(ngModel)]="courseName"
+        type="text"
+        name="courseName"
+        ></ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Course Code</ion-label>
+        <ion-input  required
+        [(ngModel)]="courseCode"
+        type="text"
+        name="courseCode"
+        ></ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Professor Name</ion-label>
+        <ion-input required 
+        [(ngModel)]="profName"
+        type="text"
+        name="profName"
+        ></ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Start Time</ion-label>
+        <ion-datetime required displayFormat="HH:mm:ss" pickerFormat="HH:mm:ss" 
+        [(ngModel)]="start"
+        type="text"
+        name="start"
+        ></ion-datetime> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>End Time</ion-label>
+        <ion-datetime required displayFormat="HH:mm:ss" pickerFormat="HH:mm:ss" 
+        [(ngModel)]="end"
+        type="text"
+        name="end"
+        ></ion-datetime> 
+      </ion-item>
+      <ion-item >
+        <ion-select required
+        multiple="true" cancelText="Back" okText="OK" placeholder="Choose the days" [(ngModel)]="days" name="days">
+         
+        <ion-select-option value="SU" >Sunday</ion-select-option>
+        <ion-select-option  value="MO">Monday</ion-select-option>
+        <ion-select-option value="TU" >Tuesday</ion-select-option>
+        <ion-select-option value="WE" >Wednesday</ion-select-option>
+        <ion-select-option  value="TH">Thursday</ion-select-option>
+        <ion-select-option  value="FR">Friday</ion-select-option>
+        <ion-select-option  value="SA">Saturday</ion-select-option>
+          
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Room</ion-label>
+        <ion-input  required
+        [(ngModel)]="room"
+        type="text"
+        name="room"
+        ></ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Seats</ion-label>
+        <ion-input  required
+        [(ngModel)]="seats"
+        type="text"
+        name="seats"
+        ></ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Credits</ion-label>
+        <ion-input  required
+        [(ngModel)]="credits"
+        type="text"
+        name="credits"
+        ></ion-input> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Section</ion-label>
+        <ion-input required 
+        [(ngModel)]="section"
+        type="text"
+        name="section"
+        ></ion-input> 
+      </ion-item>
+
+  <ion-button expand="block" type="submit" (click)="createForm()">
+      Done
+    </ion-button>
+    
+</form>
+</ion-content>

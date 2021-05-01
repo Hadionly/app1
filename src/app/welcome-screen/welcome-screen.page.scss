@@ -1,0 +1,24 @@
+ion-slide{
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+ion-img{
+  max-width: 50vw;
+  max-height: 50vh;
+}
+.step1
+{
+  background: var(--ion-color-aurak);
+  color: var(--ion-color-darker-contrast);
+}
+.step2
+{
+  background: var(--ion-color-darker);
+  color: var(--ion-color-darker-contrast);
+}
+.step3
+{
+  background: var(--ion-color-blue);
+  color: var(--ion-color-darker-contrast);
+}

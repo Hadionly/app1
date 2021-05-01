@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-button    color="darker" (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="avt">
+    <igx-avatar src="https://randomuser.me/api/portraits/men/1.jpg"
+    [roundShape]="true"
+    size="large">
+    </igx-avatar>
+    <ion-text><h5>What's up today {{user?.userName}}!</h5></ion-text>
+    <!-- <ion-text><p>ID:2016002717 Email:{{user?.userEmail}}</p></ion-text> -->
+  </div>
+
+  <div>
+    <h4 class="title">Today's classes</h4>
+
+
+    <ion-item class="itemo">
+      <ion-icon name="flask-outline" slot="start"></ion-icon>
+      <ion-label>You have CSC101 at 12:30 PM</ion-label>
+    </ion-item>
+    <ion-item class="itemo">
+      <ion-icon name="flask-outline" slot="start"></ion-icon>
+      <ion-label>You have MKT at 2:00 PM</ion-label>
+    </ion-item>
+    <ion-item class="itemo">
+      <ion-icon name="flask-outline" slot="start"></ion-icon>
+      <ion-label>You have CSC101 at 12:30 PM</ion-label>
+    </ion-item>
+  </div>
+
+
+  <div>
+    <h4 class="title">Today's events</h4>
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+      <ion-slide>
+        <ion-col>
+          <div>
+            <ion-label><h5>Sports day</h5></ion-label>
+            <p>Time: 9:00 AM to 1:00 PM</p>
+          </div>
+        </ion-col>
+      </ion-slide>
+      </ion-slides>
+  </div>
+
+
+  <div>
+    <h4 class="title">Services</h4>
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+      <ion-slide *ngIf="isAdmin || isStudent" (click)="RedirSchedule()">
+        <ion-col>
+          <div>
+            <ion-label>Generate Schedule</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/hMMZLkt/022-bulletin-board.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin || isStudent" (click)="RedirPmeeting()">
+        <ion-col>
+          <div>
+            <ion-label>Meeting Professor</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/4ZVfc6M/041-office.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin || isStudent" (click)="RedirTmeeting()">
+        <ion-col>
+          <div>
+            <ion-label>Meeting Tutor</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/NY02JrJ/008-test.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin || isStudent">
+        <ion-col>
+          <div>
+            <ion-label>Transportation</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/JBPh1y0/036-map-locator.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin" (click)="RedirProfcreate()">
+        <ion-col>
+          <div>
+            <ion-label>Add Professor</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/j5q07GB/046-online-class.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin" (click)="RedirTutorcreate()">
+        <ion-col>
+          <div>
+            <ion-label>Add Tutor</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/TPFXLgX/043-student.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin" (click)="RedirCourses()">
+        <ion-col>
+          <div>
+            <ion-label>Add Course</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/5nn8SWc/004-class.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin || isProf" (click)="RedirViewmeeting()">
+        <ion-col>
+          <div>
+            <ion-label>View Professor Meetings</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/hMMZLkt/022-bulletin-board.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin || isStudent" (click)="RedirViewTmeeting()">
+        <ion-col>
+          <div>
+            <ion-label>View Tutor Meetings</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/KwmjSTH/032-account.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+      <ion-slide *ngIf="isAdmin || isStudent" (click)="RedirViewSchedTmeeting()">
+        <ion-col>
+          <div>
+            <ion-label>View meetings</ion-label>
+          <ion-img style="pointer-events:none" src="https://i.ibb.co/9cW3ZSW/019-wall-clock.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div>
+    <h4 class="title">Profile</h4>
+    <ion-card color="blue">
+      <ion-card-content>
+        <h5>{{user?.userName}}</h5>
+        <p>Email: {{user?.userEmail}}</p>
+        <p>Phone: {{user?.userPhone}}</p>
+        <p>Since: {{user?.createdAt | date}}</p>
+        <p *ngIf="user?.isTutor==true">Courses: {{user?.courseId}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-button expand="block" shape="round" color="darker" (click)="editProfile()">Edit Profile</ion-button>
+  </div>
+</ion-content>

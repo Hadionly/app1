@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>View Professor Meetings</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button defaultHref="home" text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <ion-searchbar showcancelbutton=""
+  (ionInput)="filterList($event)"></ion-searchbar> 
+  <div *ngFor="let form of pmeetingList | async">
+  <ion-item
+    
+    *ngIf="(((form.pId == user?.userId) && form.accepted==null)|| (user?.isAdmin == true))"
+    routerLink="/pformview/{{form.id}}"
+  >
+
+    <ion-label >
+      <h2>{{ form.sName}}</h2>
+      <p>Email: {{ form.sEmail }}</p>
+      <p>Student ID: {{ form.studentId }}</p>
+      <p>Prefered timing: {{ form.sTime }} to {{ form.eTime }}</p>
+    </ion-label>
+
+  </ion-item>
+  </div>
+</ion-content>
+

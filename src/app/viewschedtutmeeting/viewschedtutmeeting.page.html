@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>View Tutoring Meetings</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button (click)="RedirTmeeting()" text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <ion-button color="danger" expand="full"  (click)="RedirViewStudentmeeting()">Switch to Professor Meetings</ion-button>
+  <div *ngFor="let form of smeetingList | async">
+  <ion-item
+    
+    *ngIf="(((form.sId == user?.userId) )|| (user?.isAdmin == true))"
+    routerLink="/tformview/{{form.id}}"
+  >
+  
+    <ion-label >
+      <h2>{{ form.pName}}</h2>
+      <p>Email: {{ form.pEmail }}</p>
+
+      <p>Prefered timing: {{ form.sTime }} to {{ form.eTime }}</p>
+      <p *ngIf="form.accepted==true">ACCEPTED</p>
+      <p *ngIf="form.accepted==false">DECLINED</p>
+    </ion-label>
+    <ion-icon name="thumbs-up-outline" color="success" *ngIf="form.accepted==true"></ion-icon>
+    <ion-icon name="thumbs-down-outline" color="success" *ngIf="form.accepted==false"></ion-icon>
+  </ion-item>
+  </div>
+</ion-content>
+

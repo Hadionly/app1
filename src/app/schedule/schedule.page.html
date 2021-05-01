@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Generate Schedule</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button defaultHref="profile" text="Back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Generate Schedule</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- <h1 style="align-items: center; display: flex; justify-content: center;">Generate Schedule</h1> -->
+
+  <!-- <div id="container" style="display: flex; align-items: center; justify-content: center;"> -->
+    <div [hidden]="ishiddenSuggested">
+      <h3>Suggested Schedule</h3>
+      <ion-card *ngFor="let course of suggestedSchedule">
+        <ion-card-header>
+          <ion-card-subtitle>Section: {{course.section}}</ion-card-subtitle>
+          <ion-card-title>{{course.courseCode}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label>From: {{timeOnly(course.start)}} to {{timeOnly(course.end)}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Days: {{course.days}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Professor: {{course.profName}}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-button (click)="ishidden=false; ishiddenSuggested=true; ishiddenbtn2=false" color="light">Choose another</ion-button>
+      <ion-button (click)="accepted(suggestedSchedule)" color="danger">I like it</ion-button>
+    </div>
+
+    <div [hidden]=ishidden>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <h3 style="display: flex; justify-content:center">Available Courses</h3>
+        </ion-label>
+      </ion-list-header>
+      <div >
+      <ion-item >
+      <ion-select
+      multiple="true" cancelText="Back" okText="Genrate" placeholder="Choose your courses for this semester" [(ngModel)]="courses" (ionChange)="generate()">
+
+      <ion-select-option *ngFor="let course of coursesDB" >{{course.courseCode}}</ion-select-option>
+
+
+      </ion-select>
+    </ion-item>
+    <ion-button (click)="showSuggested(); ishiddenSuggested=false; ishidden=true; ishiddenbtn2=true"[hidden]="ishiddenbtn2">Show Suggested Courses</ion-button>
+    </div>
+    </ion-list>
+    <h3 [hidden]="isheader">Schedule</h3>
+    <ion-card *ngFor="let course of finalSchedule">
+      <ion-card-header>
+        <ion-card-subtitle>Section: {{course.section}}</ion-card-subtitle>
+        <ion-card-title>{{course.courseCode}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>From: {{timeOnly(course.start)}} to {{timeOnly(course.end)}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Days: {{course.days}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Professor: {{course.profName}}</ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-button (click)="accepted(finalSchedule)" [hidden]="ishiddenbtn">Accept</ion-button>
+
+  </div>
+
+</ion-content>

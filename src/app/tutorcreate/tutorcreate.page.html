@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Tutor</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button defaultHref="home" text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <div *ngFor="let student of stuList | async">
+  <ion-item
+    
+    *ngIf="((student.isStudent==true) && (student.isTutor==false))"
+    routerLink="/stulist/{{student.userId}}"
+  >
+    <ion-label >
+      <h2>{{ student.userName}}</h2>
+      <p>Email: {{ student.userEmail }}</p>
+      <h2>{{student.studentId}}</h2>
+    </ion-label>
+  </ion-item>
+  </div>
+</ion-content>

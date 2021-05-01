@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Profile</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button  text="Cancel" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <form>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Full Name</ion-label>
+          <ion-input required type="text" [(ngModel)]="name" name="name"></ion-input>
+        </ion-item>
+     
+        <ion-item>
+          <ion-label position="stacked">Phone</ion-label>
+          <ion-input required type="tel" [(ngModel)]="phone" name="phone"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="istutor==true">
+          <ion-label position="stacked">Courses tutoring</ion-label>
+          <ion-input required type="text" [(ngModel)]="courses" name="courses"></ion-input>
+        </ion-item>
+        
+        <ion-button type="submit" expand="block" shape="round" (click)="updateProfile()">Update</ion-button>
+      </ion-list>
+    </form>
+  </ion-card>
+
+</ion-content>

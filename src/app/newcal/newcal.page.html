@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Calendar</ion-title>
+      <ion-buttons slot="primary">
+          <ion-back-button  text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <mbsc-eventcalendar [data]="myEvents" [options]="calendarOptions" [(selectedDate)]="calendarSelectedDate">
+  </mbsc-eventcalendar>
+  <mbsc-popup [options]="popupOptions" [anchor]="popupAnchor" [buttons]="popupButtons" [headerText]="popupHeaderText" #popup>
+      <div class="mbsc-form-group">
+          <mbsc-input label="Title" [(ngModel)]="popupEventTitle"></mbsc-input>
+          <mbsc-textarea label="Description" [(ngModel)]="popupEventDescription"></mbsc-textarea>
+      </div>
+      <div class="mbsc-form-group">
+          <mbsc-switch label="All-day" [(ngModel)]="popupEventAllDay"></mbsc-switch>
+          <mbsc-datepicker [(ngModel)]="popupEventDates" [options]="datePickerOptions" [controls]="popupEventAllDay ? datePickerControls : datetimePickerControls" [responsive]="popupEventAllDay ? datePickerResponsive : datetimePickerResponsive" [startInput]="startInput"
+              [endInput]="endInput"></mbsc-datepicker>
+          <mbsc-input #startInput label="Starts"></mbsc-input>
+          <mbsc-input #endInput label="Ends"></mbsc-input>
+          <mbsc-segmented-group [(ngModel)]="popupEventStatus">
+              <mbsc-segmented value="busy">Show as busy</mbsc-segmented>
+              <mbsc-segmented value="free">Show as free</mbsc-segmented>
+          </mbsc-segmented-group>
+          <div *ngIf="isEdit" class="mbsc-button-group">
+              <mbsc-button class="mbsc-button-block" color="danger" variant="outline" (click)="delete()">Delete event
+              </mbsc-button>
+          </div>
+      </div>
+  </mbsc-popup>
+</ion-content>

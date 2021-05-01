@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ user?.userName }}</ion-title>
+    <ion-buttons slot="primary">
+    	<ion-back-button  text="back" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <h3>Tutor Name</h3>
+  <p >{{ user?.userName }}</p>
+
+  <h3>Email</h3>
+  <p>{{ user?.userEmail }}</p>
+  <h3>Tutoring Courses</h3>
+  <p>{{user?.courseId}}</p>
+<br>
+  <h3>Student Name</h3>
+  <p>{{user2?.userName}}</p>
+  <h3>Student Email</h3>
+  <p>{{user2?.userEmail}}</p>
+  <h3>Student ID</h3>
+  <p>{{user2?.studentId}}</p>
+
+  <form [formGroup]="createPForm" (submit)="createForm()">
+    <ion-item>
+        <ion-label stacked>Start Time</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" 
+        formControlName="sTime"
+        type="text"
+        ></ion-datetime> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>End Time</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" 
+        formControlName="eTime"
+        type="text"
+        ></ion-datetime> 
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Course that need tutoring</ion-label>
+        <ion-input  required
+        formControlName="reason"
+        type="text"
+        ></ion-input> 
+      </ion-item>
+
+  <ion-button expand="block" type="submit" >
+      Done
+    </ion-button>
+</form>
+</ion-content>
